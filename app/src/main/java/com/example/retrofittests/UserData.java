@@ -3,7 +3,7 @@ package com.example.retrofittests;
 import java.util.HashMap;
 import java.util.Map;
 
-public class UserData {
+public class UserData extends MappableData{
 
     // caseId=191&uName=191user&name=David&number=876567432&emergencynum=7896541234&address=8/9/8
 
@@ -21,15 +21,12 @@ public class UserData {
 
     public String address;
 
-    public Map<String, String> toMap() {
-        if (sampleData == null) {
-            sampleData = new HashMap<String, String>();
-            updateSampleData();
-        }
-        return sampleData;
+    void setQueryParam() {
+        queryParam = "adduser";
     }
 
-    private void updateSampleData(){
+    @Override
+    void updateMapData(){
         sampleData.put("caseId", caseId);
         sampleData.put("uName", uName);
         sampleData.put("name", name);
