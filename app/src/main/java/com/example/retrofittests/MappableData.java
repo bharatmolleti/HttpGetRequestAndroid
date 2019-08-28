@@ -28,6 +28,10 @@ public abstract class MappableData implements IMappableData {
         return mapData;
     }
 
+    public MappableData() {
+        setQueryParam();
+    }
+
     @Override
     public String getQueryParam() {
         return queryParam;

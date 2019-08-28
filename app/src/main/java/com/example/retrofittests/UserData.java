@@ -19,6 +19,7 @@ public class UserData extends MappableData{
 
     public String address;
 
+    @Override
     void setQueryParam() {
         queryParam = "adduser";
     }
