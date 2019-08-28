@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
     TextView textView;
     HTTPUtils utils;
 
-    String testURL = "https://lcdemo.herokuapp.com/adduser?";
+    String testURL = "https://lcdemo.herokuapp.com";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,12 +28,9 @@ public class MainActivity extends AppCompatActivity {
 
         textView = (TextView) findViewById(R.id.textView);
 
-        String urlToGet = null;
-        try {
-            urlToGet = testURL + HTTPUtils.reduceMapToRequest(testUserDataRequest().toMap());
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
+        IMappableData data = testUserDataRequest();
+
+        String urlToGet = testURL + "/" + data.getQueryParam() + "?" + data.getRequestParams();
 
         if (urlToGet != null) {
             utils = HTTPUtils.getInstance(this);
